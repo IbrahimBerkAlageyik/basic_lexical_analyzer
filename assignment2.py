@@ -37,43 +37,34 @@ def show_symbol_table():
         print(f"{symbol}  ", end="")
 
 def is_integer(string):
-    # Remove leading and trailing whitespace
     string = string.strip()
     
-    # Check if string is empty
     if not string:
         return False
     
-    # Check if the first character is a sign (+ or -) and remove it if present
     if string[0] in ['+', '-']:
         string = string[1:]
     
-    # Check if all remaining characters are digits
     if string.isdigit():
         return True
     
     return False
 
 def is_float(string):
-    # Remove leading and trailing whitespace
     string = string.strip()
     
-    # Check if string is empty
     if not string:
         return False
     
-    # Check if string has more than one decimal point
     if string.count('.') > 1:
         return False
     
-    # Check if all characters are digits or if the first character is a sign (+ or -)
     if all(char.isdigit() or (char == '.' and index != 0) or (char in ['+', '-'] and index == 0) for index, char in enumerate(string)):
         return True
     
     return False
 
 def is_valid_variable_name(name):
-    # Check if the name is a valid Python identifier and not a keyword
     return name.isidentifier() and not keyword.iskeyword(name)
 
 
